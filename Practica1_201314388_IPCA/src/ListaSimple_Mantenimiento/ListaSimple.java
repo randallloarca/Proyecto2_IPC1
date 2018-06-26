@@ -12,6 +12,23 @@ public class ListaSimple {
         }
     }
 
+    public void Modificar(int id_estacion, int id_avion, int mantenimiento, String estado) {
+        if (EstaVacio()) {
+            System.out.println("LISTA VACIA");
+        } else {
+            Nodo_LS aux = primero;
+
+            while (aux != null) {
+                if(aux.ID_estaciones==id_estacion){
+                    aux.estado=estado;
+                    aux.ID_Aviones= id_avion;
+                    aux.ID_Mantenimiento=mantenimiento;
+                }
+                aux = aux.siguiente;
+            }
+        }
+    }
+    
     public void insertarAlFinal(Nodo_LS nuevo) {
         if (EstaVacio()) {
             primero = nuevo;

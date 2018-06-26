@@ -24,6 +24,23 @@ public class ListaDoblementeEnlazada {
         }
     }
 
+    public Nodo_LDE_Aviones buscar(int id_avion){
+        Nodo_LDE_Aviones aux = primero;
+
+        if (estaVacia()) {
+            System.out.println("LISTA VACIA");
+        } else {
+
+            while (aux != null) {
+                if(aux.getNo_Aviones()==id_avion){
+                    return aux;
+                }
+                aux = aux.siguiente;
+            }
+        }
+        
+        return null;
+    }
     public String fimprimirLista() {
         String temp = "";
         if (estaVacia()) {

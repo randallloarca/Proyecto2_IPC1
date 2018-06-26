@@ -128,11 +128,10 @@ public class Ventana_Principal extends javax.swing.JFrame {
 
 
     private void EmpezarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EmpezarActionPerformed
-        
-        
+
         generar_aviones(Integer.parseInt(this.text_CantidadAviones.getText()));
-        Nodo_LDE_Aviones nuevo = lista.primero ;
-        generar_estaciones(Integer.parseInt(this.text_CantidadEstaciones.getText()),nuevo.getNo_Aviones(),nuevo.getNo_Mantenimiento());
+        //Nodo_LDE_Aviones nuevo = lista.primero ;
+        generar_estaciones(Integer.parseInt(this.text_CantidadEstaciones.getText()), 0, 0);
 
         consola.setText(lista.fimprimirLista()
                 + "\n" + cola_pasajeros.imprimir()
@@ -142,13 +141,14 @@ public class Ventana_Principal extends javax.swing.JFrame {
                 + "\n");
 
     }//GEN-LAST:event_EmpezarActionPerformed
-
+    int turnos = 0;
     private void Cambiar_TurnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Cambiar_TurnoActionPerformed
         consola.setText("");
-        int turnos = 0;
-        String turno = "++++++++++++ Turno" + turnos + "++++++++++++";
+        turnos++;
+        String turno = "++++++++++++ Turno" + turnos + "++++++++++++" + "\n" + "\n";
         String finTurno = "++++++++++++ Fin Turno" + turnos + "++++++++++++";
         sacar_pasajero(5);
+        sacar_AvionesDeCola(Integer.parseInt(this.text_CantidadEstaciones.getText()));
 
         consola.setText(
                 turno
@@ -159,25 +159,33 @@ public class Ventana_Principal extends javax.swing.JFrame {
                 + "\n" + cola_m.imprimir()
                 + "\n" + finTurno
         );
-        turnos++;
+
     }//GEN-LAST:event_Cambiar_TurnoActionPerformed
+    int id_avion = 0;
+    int id_estacion = 1;
 
     public void sacar_AvionesDeCola(int cantidad_estaciones) {
-        Nodo_LS aux1= listaSimple.primero;
-        
-        
-//        if (listaSimple.EstaVacio()) {
-//            if (Integer.parseInt(text_CantidadEstaciones.getText()) != 0) {
-//                listaSimple.insertarAlFinal(new Nodo_LS(aux1.getID_estaciones(), aux1.getEstado(), aux1.getID_Aviones(), aux1.getID_Mantenimiento()));
-//            }
-//        } else {
-//            Nodo_LDE_Aviones aux;
-//            if (cola_m != null) {
-//                aux = cola_m.primero;
-//                cola_m.primero = aux.siguiente;
-//                aux = null;
-//            }
-//        }
+
+        if(id_avion>Integer.parseInt(this.text_CantidadAviones.getText())){
+            id_avion=1;
+        }
+        for (int c = 1; c <= Integer.parseInt(text_CantidadEstaciones.getText()); c++) {
+            id_avion += lista.primero.getNo_Aviones();
+            Nodo_LDE_Aviones aux = cola_m.buscar(id_avion);
+            
+
+            if(aux==null){
+                listaSimple.Modificar(c, 0, 0, "Disponible");
+            }
+            else{
+                                aux.setNo_Mantenimiento(aux.getNo_Mantenimiento()-1);
+
+                listaSimple.Modificar(c, id_avion, aux.getNo_Mantenimiento(), "Ocupado");            
+            }
+
+        }
+
+//        listaSimple.insertarAlFinal(new Nodo_LS(0, "Ocupado",id_avion, aux.getNo_Mantenimiento()));    
     }
 
     public void sacar_pasajero(int cantidad) {
@@ -204,12 +212,12 @@ public class Ventana_Principal extends javax.swing.JFrame {
         Random raviones = new Random();
         int temp_tipo = 0;
         int temp_pasajeros = 0;
-        int temp_turno_m=0;
+        int temp_turno_m = 0;
         for (int c = 1; c <= aviones; c++) {
 
             temp_tipo = raviones.nextInt(3);
             temp_pasajeros = cantidad_pasajeros(temp_tipo);
-            temp_turno_m=turno_mantenimiento(temp_tipo);
+            temp_turno_m = turno_mantenimiento(temp_tipo);
             lista.InsertarAlFinal(new Nodo_LDE_Aviones(c, temp_turno_m, temp_pasajeros, desabordaje(temp_tipo), tipo_avion(temp_tipo)));
             crear_pasajeros(c, temp_pasajeros);
             cola_m.insertarAlFinal(new Nodo_LDE_Aviones(c, temp_turno_m, temp_pasajeros, desabordaje(temp_tipo), tipo_avion(temp_tipo)));
@@ -218,7 +226,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
 
     public void generar_estaciones(int no_estaciones, int id_Aviones, int id_Mantenimiento) {
         for (int i = 1; i <= no_estaciones; i++) {
-            listaSimple.insertarAlFinal(new Nodo_LS(i, estado_Estacion(no_estaciones),id_Aviones, id_Mantenimiento));
+            listaSimple.insertarAlFinal(new Nodo_LS(i, estado_Estacion(no_estaciones), id_Aviones, id_Mantenimiento));
         }
     }
 

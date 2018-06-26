@@ -14,6 +14,25 @@ public class Cola_Mantenimiento {
         }
     }
 
+    
+    public Nodo_LDE_Aviones buscar(int id_avion){
+        Nodo_LDE_Aviones aux = primero;
+
+        if (EstaVacio()) {
+            System.out.println("LISTA VACIA");
+        } else {
+
+            while (aux != null) {
+                if(aux.getNo_Aviones()==id_avion){
+                    return aux;
+                }
+                aux = aux.siguiente;
+            }
+        }
+        
+        return null;
+    }
+    
     public void insertarAlFinal(Nodo_LDE_Aviones nuevo) {
         if (EstaVacio()) {
             primero = nuevo;
