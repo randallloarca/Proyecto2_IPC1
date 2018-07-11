@@ -1,5 +1,12 @@
 package ListaDoblementeEnlazadaAviones;
 
+import Graficas.Grafica_Aviones;
+import java.awt.Desktop;
+import java.io.File;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 public class ListaDoblementeEnlazada_Aviones {
 
     public Nodo_LDE_Aviones primero;
@@ -29,7 +36,6 @@ public class ListaDoblementeEnlazada_Aviones {
         if (estaVacia()) {
             System.out.println("LISTA VACIA");
         } else {
-
             while (aux != null) {
                 if (aux.getNo_Aviones() == id_avion) {
                     return aux;
@@ -37,7 +43,6 @@ public class ListaDoblementeEnlazada_Aviones {
                 aux = aux.siguiente;
             }
         }
-
         return null;
     }
 
@@ -81,5 +86,28 @@ public class ListaDoblementeEnlazada_Aviones {
             temp += "\n";
         }
         return temp;
+    }
+
+    //PARA GRAFICAR
+    String nombre = "Llegada de Aviones";
+    Grafica_Aviones grafica;
+    File file;
+
+    public void graficarLista() {
+        grafica = new Grafica_Aviones();
+        try {
+            grafica.graficar(primero, nombre);
+        } catch (IOException ex) {
+            Logger.getLogger(ListaDoblementeEnlazada_Aviones.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void abrir_grafica() {
+        try {
+            file = new File(nombre + ".jpg");
+            Desktop.getDesktop().open(file);
+        } catch (IOException ex) {
+            Logger.getLogger(ListaDoblementeEnlazada_Aviones.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

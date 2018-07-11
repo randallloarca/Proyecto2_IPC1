@@ -3,7 +3,7 @@ package ListaDoblementeEnlazdaCircular_Maletas;
 public class Nodo_LDEC_Maletas {
 
     public int id_pasajero, id_Maleta, id_avion;
-    Nodo_LDEC_Maletas siguiente, anterior;
+    public Nodo_LDEC_Maletas siguiente, anterior;
 
     public int getId_avion() {
         return id_avion;

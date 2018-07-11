@@ -1,0 +1,8 @@
+digraph G {
+rankdir=LR;
+node [shape=record];
+"Escritorio A" ->"Escritorio B"
+"Escritorio B" ->"Escritorio A"
+node1[label = "{Escritorios}"] [style=filled];
+node1[label = "{Escritorios}"] [style=filled];
+}

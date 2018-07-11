@@ -26,6 +26,8 @@ public class Ventana_Principal extends javax.swing.JFrame {
         initComponents();
     }
 
+    public Nodo_LDE_Aviones pavion;
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -41,6 +43,8 @@ public class Ventana_Principal extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         txt_No_Escritorios = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+        select_Graficas = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Simulacion de Aeropuerto");
@@ -80,11 +84,27 @@ public class Ventana_Principal extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
         jLabel4.setText("Cantidad de Escritorios:");
 
+        jButton1.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
+        jButton1.setText("Graficar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        select_Graficas.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
+        select_Graficas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Grafica Aviones", "Grafica Escritorios", "Grafica Maletas", "Grafica Mantenimiento", "Grafica Pasajeros", "Grafica ColaMantenimiento" }));
+        select_Graficas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                select_GraficasActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -100,41 +120,46 @@ public class Ventana_Principal extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(text_CantidadEstaciones, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
                             .addComponent(text_CantidadAviones)
-                            .addComponent(txt_No_Escritorios))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                            .addComponent(txt_No_Escritorios)))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(select_Graficas, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 401, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addContainerGap(18, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(65, 65, 65)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(text_CantidadAviones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(text_CantidadEstaciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(txt_No_Escritorios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Empezar)
+                    .addComponent(Cambiar_Turno))
+                .addGap(18, 18, 18)
+                .addComponent(select_Graficas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton1)
+                .addContainerGap(258, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(16, 16, 16)
                 .addComponent(jLabel3)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(text_CantidadAviones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(text_CantidadEstaciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4)
-                            .addComponent(txt_No_Escritorios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(Empezar)
-                            .addComponent(Cambiar_Turno))
-                        .addContainerGap(312, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane1)
-                        .addContainerGap())))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1)
+                .addContainerGap())
         );
 
         pack();
@@ -146,8 +171,8 @@ public class Ventana_Principal extends javax.swing.JFrame {
         generar_aviones(Integer.parseInt(this.text_CantidadAviones.getText()));
         //Nodo_LDE_Aviones nuevo = lista_dobleEnlazada_aviones.primero ;
         generar_estaciones(Integer.parseInt(this.text_CantidadEstaciones.getText()), 0, 0);
-
         generar_escritorios(Integer.parseInt(this.txt_No_Escritorios.getText()));
+        //lista_dobleEnlazada_aviones.graficarLista();
 
         consola.setText(lista_dobleEnlazada_aviones.ImprimirLista_DE()
                 + "\n" + cola_pasajeros.imprimir()
@@ -157,29 +182,39 @@ public class Ventana_Principal extends javax.swing.JFrame {
                 + "\n" + listaDE_Escritorios.ImprimirLista_DE()
                 + "\n");
         inicializa();
+
+        //controla los aviones
+        pavion = lista_dobleEnlazada_aviones.primero;
     }//GEN-LAST:event_EmpezarActionPerformed
 
     // boton para cambiar el turno en la simulacion
     int turnos = 0;
+
+    boolean desabordaje = false;
+
     private void Cambiar_TurnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Cambiar_TurnoActionPerformed
 
         consola.setText("");
         turnos++;
-        String turno = "++++++++++++ Turno" + turnos + "++++++++++++" + "\n" + "\n";
-        String finTurno = "++++++++++++ Fin Turno" + turnos + "++++++++++++";
-//        sacar_pasajero(5);
-//        sacar_AvionesDeCola(Integer.parseInt(this.text_CantidadEstaciones.getText()));
-        sacar_pasajero_registro(7);
-        //limpiar escritorios
+        String turno = "++++++++++++++++ Turno " + turnos + " ++++++++++++++++" + "\n" + "\n";
+        String finTurno = "+++++++++++++++++ Fin Turno " + turnos + " ++++++++++++++++";
 
-        listaDE_Escritorios.vaciar();
-        id_desktop = 65;
-        generar_escritorios(Integer.parseInt(this.txt_No_Escritorios.getText()));
-        
-        inicializa();
+        if (!desabordaje) {
+            //sacar_AvionesDeCola(Integer.parseInt(this.text_CantidadEstaciones.getText()));
+            sacar_pasajero_registro(7);
+            //limpiar escritorios
+            listaDE_Escritorios.vaciar();
+            id_desktop = 65;
+            generar_escritorios(Integer.parseInt(this.txt_No_Escritorios.getText()));
+            inicializa();
+            //FALTA ESCRITORIOS
+            llena_escritorios(id_avion);
 
-        //FALTA ESCRITORIOS
-        llena_escritorios(id_avion);
+        } else {
+            //saca los aviones de la cola de espera de mantenimiento 
+            sacar_AvionesDeCola(Integer.parseInt(this.text_CantidadEstaciones.getText()));
+        }
+
         consola.setText(turno
                 + lista_dobleEnlazada_aviones.ImprimirLista_DE_soloprimero()
                 + "\n" + cola_pasajeros.imprimir_primero(id_avion)
@@ -189,25 +224,85 @@ public class Ventana_Principal extends javax.swing.JFrame {
                 + "\n" + cola_m.imprimir()
                 + "\n" + finTurno
         );
+        if (cola_pasajeros.EstaVacio()) {
 
+            id_avion += 1;
+            if (id_avion <= Integer.parseInt(text_CantidadAviones.getText())) {
+                //correr aviones
+                lista_dobleEnlazada_aviones.primero = lista_dobleEnlazada_aviones.primero.siguiente;
 
+                pavion = pavion.siguiente;
+                crear_pasajeros(id_avion, pavion.getCantidad_Pasajeros());
+                listaDE_Escritorios.vaciar();
+                id_desktop = 65;
+                generar_escritorios(Integer.parseInt(this.txt_No_Escritorios.getText()));
+                inicializa();
+                //FALTA ESCRITORIOS
+                llena_escritorios(id_avion);
+                //desabordaje=true;            
+            }
+
+        }
+        if (id_avion > Integer.parseInt(text_CantidadAviones.getText())) {
+            desabordaje = true;
+        }
+
+        //System.out.println(cola_pasajeros.primero.id_avion + "  " + cola_pasajeros.primero.getId_pasajero());
     }//GEN-LAST:event_Cambiar_TurnoActionPerformed
 
-    ListaDoblementeEnlazadaEscritorios.Nodo_Escritorios nodo_es;
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+//
+        String categoria = (String) select_Graficas.getSelectedItem();
+        if (categoria.equals("Grafica Aviones")) {
+            lista_dobleEnlazada_aviones.graficarLista();
+            lista_dobleEnlazada_aviones.abrir_grafica();
+        } else if (categoria.equals("Grafica Escritorios")) {
+            listaDE_Escritorios.graficarLista();
+            listaDE_Escritorios.abrir_grafica();
+        } else if (categoria.equals("Grafica Maletas")) {
+            listaCircular_maletas.graficarLista();
+            listaCircular_maletas.abrir_grafica();
+        } else if (categoria.equals("Grafica Mantenimiento")) {
+            listaSimple_mantenimiento.graficarLista();
+            listaSimple_mantenimiento.abrir_grafica();
+        } else if (categoria.equals("Grafica Pasajeros")) {
+            cola_pasajeros.graficarLista();
+            cola_pasajeros.abrir_grafica();
+        } else if (categoria.equals("Grafica ColaMantenimiento")) {
+            cola_m.graficarLista();
+            cola_m.abrir_grafica();
+        } else {
+            lista_dobleEnlazada_aviones.graficarLista();
+            lista_dobleEnlazada_aviones.abrir_grafica();
+            cola_pasajeros.graficarLista();
+            cola_pasajeros.abrir_grafica();
+            listaCircular_maletas.graficarLista();
+            listaCircular_maletas.abrir_grafica();
+            listaDE_Escritorios.graficarLista();
+            listaDE_Escritorios.abrir_grafica();
+            listaSimple_mantenimiento.graficarLista();
+            listaSimple_mantenimiento.abrir_grafica();
+            cola_m.graficarLista();
+            cola_m.abrir_grafica();
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void select_GraficasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_select_GraficasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_select_GraficasActionPerformed
+
+    ListaDoblementeEnlazadaEscritorios.Nodo_Escritorios nodo_es;
     Cola_Pasajeros.Nodo_Pasajeros aux, modificar;
     Cola_Pasajeros.Nodo_Pasajeros aux2;
 
     public void inicializa() {
-
         nodo_es = listaDE_Escritorios.primero;
         aux = cola_pasajeros.primero;
     }
 
     public void llena_escritorios(int id_avion) {
-        //listaDE_Escritorios.vaciar();
-        for (int j = 1; j <= Integer.parseInt(txt_No_Escritorios.getText()); j++) {
 
+        for (int j = 1; j <= Integer.parseInt(txt_No_Escritorios.getText()); j++) {
             for (int i = 1; i <= 7; i++) {
                 if (aux != null) {
                     if (aux.id_avion == this.id_avion) {
@@ -215,51 +310,55 @@ public class Ventana_Principal extends javax.swing.JFrame {
                         aux2 = new Cola_Pasajeros.Nodo_Pasajeros(aux.id_avion, aux.id_pasajero, aux.maletas, aux.documentos, aux.turnos_registro);
                         nodo_es.cola_pasajeros_escritorios.InsertarAlFinal(aux2);
                     }
-                if (aux.siguiente != null) {
-                    aux = aux.siguiente;
-                } else {
-                    i = 8;
-                    j = Integer.parseInt(txt_No_Escritorios.getText()) + 1;
+                    if (aux.siguiente != null) {
+                        aux = aux.siguiente;
+                    } else {
+                        i = 8;
+                        j = Integer.parseInt(txt_No_Escritorios.getText()) + 1;
+                    }
                 }
-                }
-
             }
-
             if (nodo_es.siguiente != null) {
                 nodo_es = nodo_es.siguiente;
             } else {
                 j = Integer.parseInt(txt_No_Escritorios.getText()) + 1;
             }
-
         }
-
     }
 
-//metodo para sacar los aviones de la cola
+    //metodo para sacar los aviones de la cola
     int id_avion = 1;
     int id_estacion = 1;
 
     public void sacar_AvionesDeCola(int cantidad_estaciones) {
+        int id_avion = 0;//esto coloque de prueba
         if (id_avion > Integer.parseInt(this.text_CantidadAviones.getText())) {
             id_avion = 1;
         }
         for (int c = 1; c <= Integer.parseInt(text_CantidadEstaciones.getText()); c++) {
+            //        System.out.println("hola");
             id_avion += lista_dobleEnlazada_aviones.primero.getNo_Aviones();
             Nodo_LDE_Aviones aux = cola_m.buscar(id_avion);
-
             if (aux == null) {
                 listaSimple_mantenimiento.Modificar(c, 0, 0, "Disponible");
             } else {
-                aux.setNo_Mantenimiento(aux.getNo_Mantenimiento() - 1);
-                listaSimple_mantenimiento.Modificar(c, id_avion, aux.getNo_Mantenimiento(), "Ocupado");
+                //lo acabo de colocar
+                if (aux.getNo_Mantenimiento() != 1) {
+                    aux.setNo_Mantenimiento(aux.getNo_Mantenimiento() - 1);
+                    listaSimple_mantenimiento.Modificar(c, id_avion, aux.getNo_Mantenimiento(), "Ocupado");
+
+                    //prueba para eliminar avion de cola
+//                    if (aux.getNo_Aviones() == id_avion) {
+//                        cola_m.eliminar_aviones_Cola(id_avion);
+//                    }
+                } else {
+                    listaSimple_mantenimiento.Modificar(c, 0, 0, "Disponible");
+                }
             }
-
         }
-
-//        listaSimple_mantenimiento.insertarAlFinal(new Nodo_LS(0, "Ocupado",id_avion, aux.getNo_Mantenimiento()));    
     }
 
-    //metodo parea sacar los cola_pasajeros_escritorios correspondientes a cada avion que este ingresando
+    //metodo para sacar los cola_pasajeros_escritorios correspondientes a cada avion que este ingresando
     public void sacar_pasajero(int cantidad) {
         String temp = "";
 
@@ -283,9 +382,8 @@ public class Ventana_Principal extends javax.swing.JFrame {
     //metodo parea sacar los cola_pasajeros_escritorios correspondientes a cada avion que este ingresando
     public void sacar_pasajero_registro(int cantidad) {
         String temp = "";
-
         if (cola_pasajeros.EstaVacio()) {
-            System.out.println("LISTA VACIA");
+            System.out.println("COLA VACIA PASAJEROS");
         } else {
             Nodo_Pasajeros aux = cola_pasajeros.primero;
             for (int c = 0; c < cantidad; c++) {
@@ -296,17 +394,14 @@ public class Ventana_Principal extends javax.swing.JFrame {
                             cola_pasajeros.eliminar(aux.id_pasajero);
                             listaCircular_maletas.sacar_maletas_pasajero(aux.id_pasajero);
                         }
-
                         aux = aux.siguiente;
                     }
-
                 }
-
             }
         }
     }
 
-    // se generan los avione asi mismo la cantidad de cola_pasajeros_escritorios, tipo, desabordaje y mantenimiento
+    // se generan los aviones asi mismo la cantidad de cola_pasajeros_escritorios, tipo, desabordaje y mantenimiento
     public void generar_aviones(int aviones) {
         Random raviones = new Random();
         int temp_tipo = 0;
@@ -351,17 +446,18 @@ public class Ventana_Principal extends javax.swing.JFrame {
         }
 
     }
+    //genera maletas por cada pasajerp
 
     public void crear_maletas(int cantidad_maletas, int id_pasajeros, int id_avion) {
         for (int c = 1; c <= cantidad_maletas; c++) {
             listaCircular_maletas.InsertarAlFinal(new Nodo_LDEC_Maletas(c, id_pasajeros, id_avion));
         }
     }
+    //genera los turnos de mantenimiento
 
     public int turno_mantenimiento(int tipo) {
         int temp = 0;
         Random pasajeros = new Random();
-
         switch (tipo) {
             case 0:
                 temp = pasajeros.nextInt(3) + 1;
@@ -373,14 +469,13 @@ public class Ventana_Principal extends javax.swing.JFrame {
                 temp = pasajeros.nextInt(4) + 3;
                 break;
         }
-
         return temp;
     }
+    //genera la cantidad de pasajeros de forma aleatoria
 
     public int cantidad_pasajeros(int tipo) {
         int temp = 0;
         Random pasajeros = new Random();
-
         switch (tipo) {
             case 0:
                 temp = pasajeros.nextInt(5) + 5;
@@ -392,9 +487,9 @@ public class Ventana_Principal extends javax.swing.JFrame {
                 temp = pasajeros.nextInt(10) + 30;
                 break;
         }
-
         return temp;
     }
+    //genera los 3 distintos tipos de avion que pueden haber en la simulacion
 
     public String tipo_avion(int tipo) {
         String temp = "";
@@ -411,6 +506,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
         }
         return temp;
     }
+    //genera el random de desabordaje de los pasajeros de cada avion
 
     public int desabordaje(int tipo) {
         int temp = 0;
@@ -432,7 +528,6 @@ public class Ventana_Principal extends javax.swing.JFrame {
         int temp = 0;
         Random maletas = new Random();
         return temp = maletas.nextInt(4) + 1;
-
     }
 
     public int cantidad_deRegistro() {
@@ -480,11 +575,13 @@ public class Ventana_Principal extends javax.swing.JFrame {
     private javax.swing.JButton Cambiar_Turno;
     private javax.swing.JButton Empezar;
     private javax.swing.JTextArea consola;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JComboBox<String> select_Graficas;
     private javax.swing.JTextField text_CantidadAviones;
     private javax.swing.JTextField text_CantidadEstaciones;
     private javax.swing.JTextField txt_No_Escritorios;

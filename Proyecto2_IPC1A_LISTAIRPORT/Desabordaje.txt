@@ -1,0 +1,17 @@
+digraph G {
+rankdir=TB;
+node [shape=ellipse];
+"Pasajero 1 Avion1" ->"Pasajero 2 Avion1"
+"Pasajero 2 Avion1" ->"Pasajero 3 Avion1"
+"Pasajero 3 Avion1" ->"Pasajero 4 Avion1"
+"Pasajero 4 Avion1" ->"Pasajero 5 Avion1"
+"Pasajero 5 Avion1" ->"Pasajero 6 Avion1"
+"Pasajero 6 Avion1" ->"Pasajero 7 Avion1"
+node6[label = "{<val>Desabordaje Pasajeros}"] [style=filled];
+node6[label = "{<val>Desabordaje Pasajeros}"] [style=filled];
+node6[label = "{<val>Desabordaje Pasajeros}"] [style=filled];
+node6[label = "{<val>Desabordaje Pasajeros}"] [style=filled];
+node6[label = "{<val>Desabordaje Pasajeros}"] [style=filled];
+node6[label = "{<val>Desabordaje Pasajeros}"] [style=filled];
+node6[label = "{<val>Desabordaje Pasajeros}"] [style=filled];
+}

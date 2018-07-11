@@ -2,9 +2,9 @@ package ListaSimple_Mantenimiento;
 
 public class Nodo_LS {
 
-    int ID_estaciones, ID_Aviones, ID_Mantenimiento;
-    String estado;
-    Nodo_LS siguiente, anterior;
+    public int ID_estaciones, ID_Aviones, ID_Mantenimiento;
+    public String estado;
+    public Nodo_LS siguiente, anterior;
 
     public Nodo_LS(int ID_estaciones, String estado, int ID_Aviones, int ID_Mantenimiento) {
         this.ID_estaciones = ID_estaciones;

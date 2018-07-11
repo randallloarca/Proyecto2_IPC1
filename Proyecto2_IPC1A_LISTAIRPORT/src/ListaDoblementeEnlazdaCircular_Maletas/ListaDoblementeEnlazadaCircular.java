@@ -1,5 +1,13 @@
 package ListaDoblementeEnlazdaCircular_Maletas;
 
+import Graficas.Grafica_Maletas;
+import ListaDoblementeEnlazadaAviones.ListaDoblementeEnlazada_Aviones;
+import java.awt.Desktop;
+import java.io.File;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 public class ListaDoblementeEnlazadaCircular {
 
     Nodo_LDEC_Maletas primero, ultimo;
@@ -23,36 +31,54 @@ public class ListaDoblementeEnlazadaCircular {
         }
     }
 
+//        public void sacar_maletas_pasajero(int id_pasajero)  {
+//        boolean estado = false;
+//        Nodo_LDEC_Maletas aux = primero;
+//        if (aux != null) {
+//            while (aux.siguiente != primero) {
+//                if (aux.id_pasajero==id_pasajero) {
+//                    primero.siguiente.anterior = aux.anterior; // inicio en su nodo siguiente, en su .ant apunta al nodo anterior de inicio
+//                    primero.anterior.siguiente = aux.siguiente; // inicio en su nodo anterior, en su .next apunta al nodo siguiente de inicio
+//                    primero = primero.siguiente;
+//                    estado = true;
+//                }
+//                aux = aux.siguiente;
+//            }
+//        }
+//}
     //metodo usado para remover las maletas de los pasajeros
     public void sacar_maletas_pasajero(int id_pasajero) {
 
         if (EstaVacia()) {
-            System.out.println("LISTA VACIA");
+            System.out.println("LISTA VACIA MALETAS");
         } else {
             Nodo_LDEC_Maletas aux = primero;
             do {
 
                 if (aux.getId_pasajero() == id_pasajero) {
-                    if (primero == aux) {
+
+                    if (primero.id_pasajero == aux.id_pasajero) {
+                        primero = null;
                         primero = aux.siguiente;
-
                         primero.anterior = ultimo;
                         ultimo.siguiente = primero;
-                    }
-                    if (ultimo == aux) {
-                        ultimo = aux.anterior;
-
-                        ultimo.siguiente = primero;
-                        primero.anterior = ultimo;
-
                     }
                     aux.anterior.siguiente = aux.siguiente;
                     aux.siguiente.anterior = aux.anterior;
 
+                    aux = primero;
+
                 }
 
-                aux = aux.siguiente;
+                if (aux.siguiente != null) {
+                    aux = aux.siguiente;
+                }
+
             } while (aux != primero);
+            if (primero.siguiente == primero) {
+                primero = null;
+            }
+
         }
 
     }
@@ -73,18 +99,18 @@ public class ListaDoblementeEnlazadaCircular {
             }
             if (primero.siguiente == primero) {
                 primero = null;
-
             }
         }
     }
 
     public String imprimir_primero(int id_avion) {
         String temp = "";
+        temp += "****************MALETAS****************" + "\n";
         if (EstaVacia()) {
             System.out.println("LISTA VACIA");
         } else {
+
             Nodo_LDEC_Maletas aux = primero;
-            temp += "****************MALETAS****************" + "\n";
 
             do {
                 if (aux.id_avion == id_avion) {
@@ -123,5 +149,28 @@ public class ListaDoblementeEnlazadaCircular {
             temp += "\n";
         }
         return temp;
+    }
+    
+     //PARA GRAFICAR
+    String nombre = "Equipaje";
+    Grafica_Maletas grafica;
+    File file;
+
+    public void graficarLista() {
+        grafica = new Grafica_Maletas();
+        try {
+            grafica.graficar(primero, nombre);
+        } catch (IOException ex) {
+            Logger.getLogger(ListaDoblementeEnlazada_Aviones.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void abrir_grafica() {
+        try {
+            file = new File(nombre + ".jpg");
+            Desktop.getDesktop().open(file);
+        } catch (IOException ex) {
+            Logger.getLogger(ListaDoblementeEnlazada_Aviones.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

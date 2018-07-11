@@ -1,5 +1,12 @@
 package ListaDoblementeEnlazadaEscritorios;
 
+import Graficas.Grafica_Escritorios;
+import java.awt.Desktop;
+import java.io.File;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 public class ListaDoblementeEnlazada_Escritorios {
 
     public Nodo_Escritorios primero, ultimo;
@@ -22,9 +29,9 @@ public class ListaDoblementeEnlazada_Escritorios {
     public void vaciar() {
         Nodo_Escritorios aux = primero;
         while (aux != null) {
-            primero=null;
+            primero = null;
             aux = aux.siguiente;
-            primero=aux;
+            primero = aux;
 
         }
 
@@ -56,7 +63,7 @@ public class ListaDoblementeEnlazada_Escritorios {
                     Cola_Pasajeros.Nodo_Pasajeros aux_pasajero = aux.cola_pasajeros_escritorios.primero;
                     while (aux_pasajero != null) {
                         temp += "\n";
-                        temp += "\t\t" + "CLIENTE: " + aux_pasajero.id_pasajero + "\n";
+                        temp += "\t\t" + "ID_AVION: " + aux_pasajero.id_avion + " CLIENTE: " + aux_pasajero.id_pasajero + "\n";
                         temp += "\t\t" + "DOCUMENTOS: " + aux_pasajero.documentos + "\n";
                         temp += "\t\t" + "TURNOS REGISTRO: " + aux_pasajero.turnos_registro + "\n";
 
@@ -94,4 +101,28 @@ public class ListaDoblementeEnlazada_Escritorios {
 //        }
 //        return temp;
 //    }
+    
+    
+    //PARA GRAFICAR
+    String nombre = "Escritorios";
+    Grafica_Escritorios grafica;
+    File file;
+
+    public void graficarLista() {
+        grafica = new Grafica_Escritorios();
+        try {
+            grafica.graficar(primero, nombre);
+        } catch (IOException ex) {
+            Logger.getLogger(ListaDoblementeEnlazada_Escritorios.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void abrir_grafica() {
+        try {
+            file = new File(nombre + ".jpg");
+            Desktop.getDesktop().open(file);
+        } catch (IOException ex) {
+            Logger.getLogger(ListaDoblementeEnlazada_Escritorios.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }

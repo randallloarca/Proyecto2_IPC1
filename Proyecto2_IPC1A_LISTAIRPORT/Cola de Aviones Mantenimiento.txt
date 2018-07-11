@@ -1,0 +1,8 @@
+digraph G {
+rankdir=TB;
+node [shape=ellipse];
+"Avión 1" ->"Avión 2"
+"Avión 2" ->"Avión 1"
+node1[label = "{Cola de Llegadas de Aviones}"] [style=filled];
+node1[label = "{Cola de Llegadas de Aviones}"] [style=filled];
+}
